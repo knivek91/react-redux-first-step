@@ -154,7 +154,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="gulpfile.js" />
+    <Content Include="Public\js\dist\index.bundle.min.js" />
     <Content Include="Public\js\src\action\filmAction.js" />
+    <Content Include="Public\js\src\action\planetAction.js" />
+    <Content Include="Public\js\src\action\starshipAction.js" />
+    <Content Include="Public\js\src\action\vehiclesAction.js" />
     <Content Include="Public\js\src\component\dump\character.jsx" />
     <Content Include="Public\js\src\component\dump\planet.jsx" />
     <Content Include="Public\js\src\component\dump\species.jsx" />
@@ -167,6 +171,9 @@
     <Content Include="Public\js\src\reducer\characterReducer.js" />
     <Content Include="Public\js\src\reducer\filmReducer.js" />
     <Content Include="Public\js\src\reducer\index.js" />
+    <Content Include="Public\js\src\reducer\planetReducer.js" />
+    <Content Include="Public\js\src\reducer\starshipReducer.js" />
+    <Content Include="Public\js\src\reducer\vehiclesReducer.js" />
     <Content Include="Public\js\src\routes.js" />
     <Content Include="Public\js\src\store\index.js" />
     <Content Include="Web.config" />
@@ -182,7 +189,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Public\js\dist\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

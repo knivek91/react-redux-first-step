@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import * as Actions from '../../action/filmAction';
 
 import Character from '../dump/character';
+import Planet from '../dump/planet';
+import Vehicle from '../dump/vehicles';
+import Starship from '../dump/starships';
 
 class Home extends React.Component {
     
@@ -16,28 +19,44 @@ class Home extends React.Component {
     }
 
     render() {
-        const {film, isLoading, characters} = this.props
-        console.log(characters);
+        const {film, isLoading} = this.props
         if(isLoading) 
             return <h1>Loading . . . </h1>
         return (
              <div className="container">
                 <section>
-                    <button type="button" className="btn btn-primary" onClick={() => {this.fetchFilm(1)}}>Movie 1</button>
-                    <button type="button" className="btn btn-default" onClick={() => {this.fetchFilm(2)}}>Movie 2</button>
-                    <button type="button" className="btn btn-warning" onClick={() => {this.fetchFilm(3)}}>Movie 3</button>
-                    <button type="button" className="btn btn-danger"  onClick={() => {this.fetchFilm(4)}}>Movie 4</button>
-                    <button type="button" className="btn btn-info"    onClick={() => {this.fetchFilm(5)}}>Movie 5</button>
-                    <button type="button" className="btn btn-success" onClick={() => {this.fetchFilm(6)}}>Movie 6</button>
-                    <button type="button" className="btn btn-primary" onClick={() => {this.fetchFilm(7)}}>Movie 7</button>
+                    <button type="button" className="btn btn-primary" onClick={() => { this.fetchFilm(1) }}>A New Hope</button>
+                    <button type="button" className="btn btn-default" onClick={() => { this.fetchFilm(2) }}>The Empire Strikes Back</button>
+                    <button type="button" className="btn btn-warning" onClick={() => { this.fetchFilm(3) }}>Return of the Jedi</button>
+                    <button type="button" className="btn btn-danger" onClick={() => { this.fetchFilm(4) }}>The Phantom Menace</button>
+                    <button type="button" className="btn btn-info" onClick={() => { this.fetchFilm(5) }}>Attack of the Clones</button>
+                    <button type="button" className="btn btn-success" onClick={() => { this.fetchFilm(6) }}>Revenge of the Sith</button>
+                    <button type="button" className="btn btn-primary" onClick={() => { this.fetchFilm(7) }}>The Force Awakens</button>
                 </section>
                 <hr />
                 <div className="jumbotron">
-                    <h1>{film.title}</h1>
-                </div>
-                <div className="jumbotron">
-                    <h1>Characters: </h1>
-                    <Character characters={film.species}/>
+                    <div className="row">
+                        <div className="col-md-6">
+                            <h1>Characters: </h1>
+                            <hr />
+                            <Character />
+                        </div>
+                        <div className="col-md-6">
+                            <h1>Planets: </h1>
+                            <hr />
+                            <Planet />
+                        </div>
+                        <div className="col-md-6">
+                            <h1>Vehicles: </h1>
+                            <hr />
+                            <Vehicle />
+                        </div>
+                        <div className="col-md-6">
+                            <h1>Starships: </h1>
+                            <hr />
+                            <Starship />
+                        </div>
+                    </div>
                 </div>
              </div>
         );
@@ -48,15 +67,13 @@ class Home extends React.Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         film: state.film,
-        isLoading: state.isLoading,
-        characters: state.characters
+        isLoading: state.isLoading
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchFilm: movie => dispatch(Actions.fetchFilmAsync(movie)),
-        fetchCharacter: id => dispatch(Actions.fetchCharacterAsync(id))
+        fetchFilm: movie => dispatch(Actions.fetchFilmAsync(movie))
     }
 }
 

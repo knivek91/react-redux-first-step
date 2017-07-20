@@ -1,20 +1,31 @@
 ﻿import React from 'react';
+import { connect } from 'react-redux';
 
-const item = ({ name }) => (
+const Item = ({ name }) => (
     <li>{name}</li>
 );
 
-class Character extends React.Component {
+class Planet extends React.Component {
+
     render() {
-        const lis = this.props.characters.map((item, index) => <item key={index} name={item.name} />)
+        const lis = this.props.planets.map((item, index) => <Item key={index} name={item.name} />);
         return (
-            <section>   
+            <section>
                 <ul>{lis}</ul>
             </section>
         );
     }
 }
 
+const mapStateToProps = (state, ownProps) => {
+    return {
+        planets: state.planets
+    }
+}
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+    }
+}
 
-export default Character;
+export default connect(mapStateToProps, mapDispatchToProps)(Planet);

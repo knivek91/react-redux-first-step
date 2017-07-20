@@ -1,17 +1,15 @@
 ﻿import React from 'react';
+import { connect } from 'react-redux';
 
-const item = ({ name }) => (
+const Item = ({ name }) => (
     <li>{name}</li>
 );
 
-// will mount debe cargar las rutas recibidas mandando un forEach para el arreglo, asi que crea el arreglo 
-// y al crearse se lee en el render y pinta los datos ;)
-
 class Character extends React.Component {
+
     render() {
-        // // = this.props.characters.map((item, index) => <item key={index} name={item.name} />)
-        const lis = null; 
-        return (
+        const lis = this.props.characters.map((item, index) => <Item key={index} name={item.name} />);
+        return ( 
             <section>   
                 <ul>{lis}</ul>
             </section>
@@ -19,6 +17,15 @@ class Character extends React.Component {
     }
 }
 
+const mapStateToProps = (state, ownProps) => {
+    return {
+        characters: state.characters
+    }
+}
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+    }
+}
 
-export default Character;
+export default connect(mapStateToProps, mapDispatchToProps)(Character);
