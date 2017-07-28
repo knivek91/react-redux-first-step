@@ -44,6 +44,19 @@ const resolveCharacterURL = (dispatch, charactersURL) => {
     });
 }
 
+export const searchCharactersAsync = (text) => {
+    return dispatch => {
+        dispatch(cleanCharacters([]));
+        axios.get(`https://swapi.co/api/people/?search=${text}`)
+            .then((response) => {
+                const characters = response.data.results;
+                characters.forEach(character => dispatch(fetchCharacter(character)));
+                
+            })
+            .catch((error) => { console.log(error); });
+    }
+}
+
 export const fetchFilmAsync = (movie) => {
     return dispatch => {
         axios.get(`http://swapi.co/api/films/${movie}`)
@@ -53,6 +66,7 @@ export const fetchFilmAsync = (movie) => {
                 resolveCharacterURL(dispatch, film.characters);
                 resolvePlanetURL(dispatch, film.planets);
                 resolveVehicleURL(dispatch, film.vehicles);
+                console.log(film);
                 resolveStarshipURL(dispatch, film.starships);
             })
             .catch((error) => { console.log(error); });

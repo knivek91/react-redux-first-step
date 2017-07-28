@@ -1,4 +1,4 @@
-﻿import { ADD_CHARACTER, CLEAN_CHARACTER } from '../constant/constant';
+﻿import { ADD_CHARACTER, SEARCH_CHARACTERS, CLEAN_CHARACTER } from '../constant/constant';
 
 export function characters(state = [], action) {
     switch (action.type) {

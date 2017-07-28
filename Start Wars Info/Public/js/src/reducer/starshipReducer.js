@@ -1,8 +1,8 @@
-﻿import { ADD_STARHIP, CLEAN_STARSHIP } from '../constant/constant';
+﻿import { ADD_STARSHIP, CLEAN_STARSHIP } from '../constant/constant';
 
 export function starships(state = [], action) {
     switch (action.type) {
-        case ADD_STARHIP:
+        case ADD_STARSHIP:
             return [
                 ...state,
                 action.starship

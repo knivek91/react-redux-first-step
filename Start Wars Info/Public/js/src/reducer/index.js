@@ -11,5 +11,6 @@ export default combineReducers({
     isLoading: loading,
     characters,
     planets,
-    starships
+    starships,
+    vehicles
 });

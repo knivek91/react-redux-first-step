@@ -166,6 +166,7 @@
     <Content Include="Public\js\src\component\dump\vehicles.jsx" />
     <Content Include="Public\js\src\component\smart\home.jsx" />
     <Content Include="Public\js\src\component\smart\layout.jsx" />
+    <Content Include="Public\js\src\component\smart\search-character.jsx" />
     <Content Include="Public\js\src\constant\constant.js" />
     <Content Include="Public\js\src\index.js" />
     <Content Include="Public\js\src\reducer\characterReducer.js" />

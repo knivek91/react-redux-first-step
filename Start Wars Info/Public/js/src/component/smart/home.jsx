@@ -1,4 +1,5 @@
 ﻿import React from 'react';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import * as Actions from '../../action/filmAction';
 
@@ -23,7 +24,8 @@ class Home extends React.Component {
         if(isLoading) 
             return <h1>Loading . . . </h1>
         return (
-             <div className="container">
+            <div className="container">
+                <Link to={'/search-character'} className="btn btn-info">Search Character</Link>
                 <section>
                     <button type="button" className="btn btn-primary" onClick={() => { this.fetchFilm(1) }}>A New Hope</button>
                     <button type="button" className="btn btn-default" onClick={() => { this.fetchFilm(2) }}>The Empire Strikes Back</button>
