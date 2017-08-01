@@ -177,6 +177,7 @@
     <Content Include="Public\js\src\reducer\vehiclesReducer.js" />
     <Content Include="Public\js\src\routes.js" />
     <Content Include="Public\js\src\store\index.js" />
+    <Content Include="Public\js\src\ui.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -196,6 +197,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\reactredux - Web Deploy.pubxml" />
+    <Content Include="Views\Home\UI.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
