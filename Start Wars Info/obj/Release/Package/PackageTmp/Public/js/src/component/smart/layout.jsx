@@ -5,7 +5,7 @@ import Home from './home';
 class Layout extends React.Component {
 
     render() {
-        return <Home />;
+        return <Home props={this.props} />;
     }
 
 }

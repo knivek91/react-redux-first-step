@@ -8,7 +8,7 @@ const fetchVehicle = (vehicle) => {
     };
 }
 
-const cleanVehicles = (vehicles) => {
+export const cleanVehicles = (vehicles) => {
     return {
         type: CLEAN_VEHICLES,
         vehicles

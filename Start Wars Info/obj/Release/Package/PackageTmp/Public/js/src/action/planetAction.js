@@ -8,7 +8,7 @@ const fetchPlanet = (planet) => {
     };
 }
 
-const cleanPlanets = (planets) => {
+export const cleanPlanets = (planets) => {
     return {
         type: CLEAN_PLANET,
         planets

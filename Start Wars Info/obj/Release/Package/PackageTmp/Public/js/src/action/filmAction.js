@@ -25,7 +25,7 @@ const fetchCharacter = (character) => {
     }
 }
 
-const cleanCharacters = (characters) => {
+export const cleanCharacters = (characters) => {
     return {
         type: CLEAN_CHARACTER,
         characters

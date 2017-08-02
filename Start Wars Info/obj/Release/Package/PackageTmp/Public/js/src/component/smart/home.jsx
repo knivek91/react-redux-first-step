@@ -1,31 +1,65 @@
 ﻿import React from 'react';
 import { Link } from 'react-router';
+import { push } from 'react-router-redux';
 import { connect } from 'react-redux';
+
 import * as Actions from '../../action/filmAction';
+import * as ActionsPlanet from '../../action/planetAction';
+import * as ActionsVehicles from '../../action/vehiclesAction';
+import * as ActionsStarship from '../../action/starshipAction';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { List, ListItem } from 'material-ui/List';
+import Divider from 'material-ui/Divider';
 
 import Character from '../dump/character';
 import Planet from '../dump/planet';
 import Vehicle from '../dump/vehicles';
 import Starship from '../dump/starships';
 
+const Item = ({ text }) => (
+    <div className="col-md-3 col-sm-12">
+        <ListItem>
+            <Link to={`/`}> {text} </Link>
+        </ListItem>
+        <Divider />
+    </div>
+);
+
 class Home extends React.Component {
-    
+
     constructor(props) {
         super(props);
         this.fetchFilm = this.fetchFilm.bind(this);
-    }   
-    
+        this.goToSearch = this.goToSearch.bind(this);
+    }
+
     fetchFilm(id) {
         this.props.fetchFilm(id);
     }
 
+    goToSearch() {
+        this.props.cleanCharacters([]);
+        this.props.cleanPlanets([]);
+        this.props.cleanVehicles([]);
+        //this.props.cleanStarShips([]);
+        //browserHistory.push('/search-character');
+        this.props.goToSearch();
+    }
+
     render() {
-        const {film, isLoading} = this.props
-        if(isLoading) 
+        const { film, isLoading } = this.props
+        if (isLoading)
             return <h1>Loading . . . </h1>
+
+        const characters = this.props.characters.map((item, index) => <Item key={index} text={item.name} />)
+        const planets = this.props.planets.map((item, index) => <Item key={index} text={item.name} />)
+        const vehicles = this.props.vehicles.map((item, index) => <Item key={index} text={item.name} />)
+        const starships = this.props.starships.map((item, index) => <Item key={index} text={item.name} />)
+
         return (
             <div className="container">
-                <Link to={'/search-character'} className="btn btn-info">Search Character</Link>
+                <button type="button" className="btn btn-warning" onClick={this.goToSearch}>Search Character</button>
                 <section>
                     <button type="button" className="btn btn-primary" onClick={() => { this.fetchFilm(1) }}>A New Hope</button>
                     <button type="button" className="btn btn-default" onClick={() => { this.fetchFilm(2) }}>The Empire Strikes Back</button>
@@ -37,30 +71,48 @@ class Home extends React.Component {
                 </section>
                 <hr />
                 <div className="jumbotron">
-                    <div className="row">
-                        <div className="col-md-6">
-                            <h1>Characters: </h1>
-                            <hr />
-                            <Character />
+                    <MuiThemeProvider>
+                        <div>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <h1 className="text-center">Characters</h1>
+                                    <hr />
+                                    <List>
+                                        {characters}
+                                    </List>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <h1 className="text-center">Planets</h1>
+                                    <hr />
+                                    <List>
+                                        {planets}
+                                    </List>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <h1 className="text-center">Vehicles</h1>
+                                    <hr />
+                                    <List>
+                                        {vehicles}
+                                    </List>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <h1 className="text-center">Starships</h1>
+                                    <hr />
+                                    <List>
+                                        {starships}
+                                    </List>
+                                </div>
+                            </div>
                         </div>
-                        <div className="col-md-6">
-                            <h1>Planets: </h1>
-                            <hr />
-                            <Planet />
-                        </div>
-                        <div className="col-md-6">
-                            <h1>Vehicles: </h1>
-                            <hr />
-                            <Vehicle />
-                        </div>
-                        <div className="col-md-6">
-                            <h1>Starships: </h1>
-                            <hr />
-                            <Starship />
-                        </div>
-                    </div>
+                    </MuiThemeProvider>
                 </div>
-             </div>
+            </div>
         );
     }
 
@@ -69,13 +121,22 @@ class Home extends React.Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         film: state.film,
-        isLoading: state.isLoading
+        isLoading: state.isLoading,
+        characters: state.characters,
+        planets: state.planets,
+        vehicles: state.vehicles,
+        starships: state.starships
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchFilm: movie => dispatch(Actions.fetchFilmAsync(movie))
+        fetchFilm: movie => dispatch(Actions.fetchFilmAsync(movie)),
+        cleanCharacters: item => dispatch(Actions.cleanCharacters(item)),
+        cleanPlanets: item => dispatch(ActionsPlanet.cleanPlanets(item)),
+        cleanVehicles: item => dispatch(ActionsVehicles.cleanVehicles(item)),
+        cleanStarships: item => dispatch(ActionsStarship.cleanStarships(item)),
+        goToSearch: () => { dispatch(push('/search-character')); } // change this for be in an action to separate logics for display and bussines logic (actions)
     }
 }
 

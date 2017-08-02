@@ -7,7 +7,8 @@ var gulp = require('gulp'),
     source = require('vinyl-source-stream');
 
 const files = [
-    'index.js'
+    'index.js',
+    //'ui.js'
 ];
 
 const public = './public/';
@@ -22,7 +23,7 @@ gulp.task('dev', () => {
             extensions: ['.js', '.jsx'],
             debug: true
         })
-            .transform('babelify', { presets: ['es2015', 'stage-3', 'react'] })
+            .transform('babelify', { presets: ['es2015', 'stage-1', 'react'] })
             .transform('brfs')
             .bundle()
             .pipe(source(file))

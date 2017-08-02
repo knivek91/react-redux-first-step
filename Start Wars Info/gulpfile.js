@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 
 const files = [
     'index.js',
-    'ui.js'
+    //'ui.js'
 ];
 
 const public = './public/';

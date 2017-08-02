@@ -2,6 +2,7 @@
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import routes from './routes';
 
@@ -15,6 +16,7 @@ const initialState = {
 };
 
 const store = configureStore(initialState);
+const history = syncHistoryWithStore(browserHistory, store)
 
 /**
 	Not only do we wrap with Provider, 
@@ -23,7 +25,7 @@ const store = configureStore(initialState);
 injectTapEventPlugin(); // for touch events for react
 render(
     <Provider store={store}>
-        <Router routes={routes} history={browserHistory} />
+        <Router routes={routes} history={history} />
     </Provider>,
     document.getElementById('app')
 );

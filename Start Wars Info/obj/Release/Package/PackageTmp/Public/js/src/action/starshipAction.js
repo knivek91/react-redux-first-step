@@ -8,7 +8,7 @@ const fetchStarship = (starship) => {
     };
 }
 
-const cleanStarships = (starships) => {
+export const cleanStarships = (starships) => {
     return {
         type: CLEAN_STARSHIP,
         starships

@@ -129,6 +129,5 @@ C:\Users\krojas\Desktop\New folder\React\Start Wars Info\bin\Microsoft.AI.Depend
 C:\Users\krojas\Desktop\New folder\React\Start Wars Info\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\krojas\Desktop\New folder\React\Start Wars Info\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\krojas\Desktop\New folder\React\Start Wars Info\bin\Microsoft.AI.Web.xml
-C:\Users\krojas\Desktop\New folder\React\Start Wars Info\obj\Debug\Start Wars Info.csprojResolveAssemblyReference.cache
 C:\Users\krojas\Desktop\New folder\React\Start Wars Info\obj\Debug\Start Wars Info.dll
 C:\Users\krojas\Desktop\New folder\React\Start Wars Info\obj\Debug\Start Wars Info.pdb
